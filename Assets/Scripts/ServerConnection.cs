@@ -14,6 +14,6 @@ public class ServerConnection : MonoBehaviourPunCallbacks
 
     public override void OnConnectedToMaster()
     {
-        SceneManager.LoadScene("MainGame");
+        SceneManager.LoadScene("RoomManagementScene");
     }
 }

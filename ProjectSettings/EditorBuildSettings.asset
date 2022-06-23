@@ -9,6 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/OpeningScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
+    path: Assets/Scenes/RoomManagementScene.unity
+    guid: 3e92305d1a354b041aa4d76ff5ea10dd
+  - enabled: 1
+    path: Assets/Scenes/WaitingScene.unity
+    guid: 7bee579a34936d04291a68acd033b9dc
+  - enabled: 1
     path: Assets/Scenes/MainGame.unity
     guid: a1612452e24bae74693b3a1ccbde1535
   m_configObjects: {}
