@@ -17,7 +17,7 @@ public class NpcSpawner : MonoBehaviour
     [SerializeField]
     private float spawningInterval = 5.0f;
 
-    private int currentNPCcount;
+    public static int currentNPCcount;
     private float timeBetweenSpawns;
 
     // Start is called before the first frame update
