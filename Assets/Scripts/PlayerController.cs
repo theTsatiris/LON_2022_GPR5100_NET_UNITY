@@ -13,9 +13,17 @@ public class PlayerController : MonoBehaviour
     private GameObject FPSCamera;
 
     [SerializeField]
+    private GameObject UpperBody;
+
+    [SerializeField]
     private float speed = 5.0f;
 
+    [SerializeField]
+    private float sensitivity = 1.0f;
+
     private PhotonView view;
+
+    private float CurrentUpperBodyRotation = 0.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -51,6 +59,22 @@ public class PlayerController : MonoBehaviour
             {
                 transform.position += transform.right * speed * Time.deltaTime;
             }
+
+            float horizontalRotation = Input.GetAxis("Mouse X");
+
+            Vector3 rotationalVector = new Vector3(0.0f, horizontalRotation, 0.0f) * sensitivity;
+
+            Vector3 currentRotation = transform.rotation.eulerAngles;
+            currentRotation += rotationalVector;
+
+            transform.rotation = Quaternion.Euler(currentRotation);
+
+            float verticalRotation = Input.GetAxis("Mouse Y") * sensitivity;
+
+            CurrentUpperBodyRotation -= verticalRotation;
+            CurrentUpperBodyRotation = Mathf.Clamp(CurrentUpperBodyRotation, -25, 15);
+
+            UpperBody.transform.localEulerAngles = new Vector3(CurrentUpperBodyRotation, 0.0f, 0.0f);
         }
     }
 }
