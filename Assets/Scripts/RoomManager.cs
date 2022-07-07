@@ -24,8 +24,8 @@ public class RoomManager : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
-        
-        //
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     // ********** ONCLICKS **********
@@ -66,6 +66,19 @@ public class RoomManager : MonoBehaviourPunCallbacks
         {
             PhotonNetwork.NickName = NickName.text;
             PhotonNetwork.JoinRandomRoom();
+        }
+        else
+        {
+            Debug.Log("INVALID INPUT!!!");
+        }
+    }
+
+    public void SelectRoom()
+    {
+        if (InputIsValid(NickName))
+        {
+            PhotonNetwork.NickName = NickName.text;
+            SceneManager.LoadScene("RoomListScene");
         }
         else
         {

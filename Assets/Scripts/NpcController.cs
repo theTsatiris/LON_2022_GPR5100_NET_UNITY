@@ -39,6 +39,19 @@ public class NpcController : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            GameObject hit = collision.gameObject;
+            if (hit.CompareTag("Player"))
+            {
+                hit.GetComponent<PhotonView>().RPC("TakeDamage", RpcTarget.AllBuffered, 10.0f);
+                Die();
+            }
+        }
+    }
+
     [PunRPC]
     public void Die()
     {

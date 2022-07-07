@@ -42,15 +42,20 @@ public class ProjectileController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        GameObject hit = collision.gameObject;
-
-        if (hit.CompareTag("NPC"))
-        {
-            hit.GetComponent<PhotonView>().RPC("Die", RpcTarget.AllBuffered);
-        }
-
         if(view.IsMine)
-        {
+        { 
+            GameObject hit = collision.gameObject;
+
+            if(hit.CompareTag("NPC"))
+            {
+                hit.GetComponent<PhotonView>().RPC("Die", RpcTarget.AllBuffered);
+            }
+
+            if(hit.CompareTag("Player"))
+            {
+                hit.GetComponent<PhotonView>().RPC("TakeDamage", RpcTarget.AllBuffered, 20.0f);
+            }
+
             PhotonNetwork.Destroy(this.gameObject);
         }
     }

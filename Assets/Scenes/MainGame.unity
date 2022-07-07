@@ -324,7 +324,7 @@ MonoBehaviour:
   - {fileID: 1768670862}
   - {fileID: 482547391}
   - {fileID: 1099461916}
-  maximumNPCs: 5
+  maximumNPCs: 1
   spawningInterval: 5
 --- !u!1 &482547390
 GameObject:
